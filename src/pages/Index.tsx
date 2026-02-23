@@ -1,12 +1,32 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import Navbar from "@/components/bakery/Navbar";
+import HeroSection from "@/components/bakery/HeroSection";
+import ShopSection from "@/components/bakery/ShopSection";
+import CustomizeSection from "@/components/bakery/CustomizeSection";
+import TestimonialsSection from "@/components/bakery/TestimonialsSection";
+import AboutSection from "@/components/bakery/AboutSection";
+import ContactSection from "@/components/bakery/ContactSection";
+import Footer from "@/components/bakery/Footer";
+import CartPanel from "@/components/bakery/CartPanel";
+import BackToTop from "@/components/bakery/BackToTop";
 
 const Index = () => {
+  const [cartOpen, setCartOpen] = useState(false);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      <Navbar onCartClick={() => setCartOpen(true)} />
+      <main>
+        <HeroSection />
+        <ShopSection />
+        <CustomizeSection />
+        <TestimonialsSection />
+        <AboutSection />
+        <ContactSection />
+      </main>
+      <Footer />
+      <CartPanel isOpen={cartOpen} onClose={() => setCartOpen(false)} />
+      <BackToTop />
     </div>
   );
 };
